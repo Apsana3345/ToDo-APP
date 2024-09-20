@@ -24,7 +24,23 @@ checkboxList.forEach((checkbox)=>{
     });
 });
 inputFields.forEach((input)=>{
+   
+        if (input.value.trim() !== '') {
+            input.style.color = 'black'; 
+        } else {
+            input.style.color = '#D9D9D9';
+        }
+
     input.addEventListener('focus',()=>{
-        progressBar.classList.remove('show-error')
-    })
+        if (input.value.trim()===''){
+            input.style.color='black';
+        }
+        progressBar.classList.remove('show-error');
+    });
+    input.addEventListener('light-black', () => {
+        if (input.value.trim() === '') {
+            input.style.color = '#D9D9D9'; 
+        }})
+    
+        
 })

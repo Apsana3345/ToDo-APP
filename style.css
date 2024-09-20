@@ -31,7 +31,7 @@ margin-bottom: 1rem;
 .sunImage{
     vertical-align:middle;
     margin-left: 16px;
-    animation: rotate 2s linear infinite;
+    /* animation: rotate 2s linear infinite; */
 }
 @keyframes rotate {
     from {
@@ -139,9 +139,9 @@ margin-top: 1px;
 .check-icon{
     display: none;
 }
-/* .goal-list:hover{
-    color: black;
-} */
+.goal-list::after{
+    color: rgb(18, 18, 18);
+}
 
 
 .final{
