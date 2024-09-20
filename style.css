@@ -1,0 +1,125 @@
+body{
+    /* background-color: #FBFBFB; */
+    background-color: #e6e1e1;
+    font-family:"Poppins", sans-serif;
+    margin:0;
+}
+h1{
+    font-size:4rem;
+    color: #48A300;
+    
+    text-align: center;
+}
+.title span{
+    color:#61481C;
+}
+.container{
+    /* margin:20px; */
+    padding: 0px 16px;
+}
+.app-container{
+    max-width:660px;
+    background-color: #FBFBFB;
+    border-radius: 15px;
+    margin-inline:auto ;
+padding:32px 48px;
+box-shadow:0 0 10px 5px rgba(0,0,0,0.1);
+margin-bottom: 1rem;
+
+}
+.sunImage{
+    vertical-align:middle;
+    margin-left: 16px;
+}
+.progress-label{
+    font-size:14px;
+color: #858585;
+margin-bottom: 18px;
+}
+.progress-bar{
+    height:30px;
+    /* accent-color: #48A300; */
+    background-color: #48A3001A;
+    border-radius: 15px;
+}
+
+.progress-value{
+    height:100%;
+    width: 60%;
+    font-size: 10px;
+    font-weight: 500;
+    color: #FBFBFB;
+    display:flex;
+    align-items: center;
+    padding-left:10px ;
+    /* accent-color: #48A300; */
+    background-color:#48A300 ;
+    border-radius: 15px;
+}
+.error-label{
+    font-size:14px;
+color:#FF5151;
+margin-top: 20px;
+}
+.goal-container{
+    border-radius:17px;
+    border:1px solid #0000001A;
+    height:82px ;
+    display: flex;
+    align-items: center;
+    margin:1.5rem 0;
+    color: #FFFFFF;
+}
+.custom-checkbox{
+    height: 24px;
+    width:24px;
+    border: 1px solid #61481C4D;
+    border-radius:50%;
+    margin:0 12px;
+    flex-shrink: 0;
+    /* color:#FFFFFF; */
+}
+.goal-list{
+    border: none;
+    margin-left: 5px;
+    padding: 3px;
+    color:#D9D9D9;
+    opacity: 0.6;
+    font-family: inherit;
+}
+
+
+.final{
+    font-size:16px;
+    font-weight: 700;
+   
+   text-align: center;
+   margin-top: 3rem;
+   margin-bottom: 2rem;
+}
+.final-para{
+    font-size:10px;
+    font-weight: 500;
+    color:#858585;
+    text-align: center;
+    margin-bottom: 2.5rem; 
+}
+
+@media(max-width:768px){
+    .title{
+        font-size: 2rem;
+    }
+    .app-container{
+        padding: 16px 32px;
+    }
+    .goal-container{
+        height:60px;
+       
+
+    }
+    .final{
+        margin-block: 1rem;
+    }
+    
+    
+}
