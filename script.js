@@ -18,13 +18,13 @@ checkboxList.forEach((checkbox)=>{
         })
         if (allFieldsFilled){
         checkbox.parentElement.classList.toggle("completed");
-        // progressValue.style.width="45%"
+        progressValue.style.width="45%"
         const inputId=checkbox.nextElementSibling.id
         allGoals[inputId].completed=!allGoals[inputId].completed
-        localStorage.setItem('allGoals' ,JSON.stringify(allGoals))
+        
 
         // errorLabel.style.display = 'none'; // Hide the error label
-        // progressBar.classList.remove('show-error');
+        progressBar.classList.remove('show-error');
 
     }
     else {
