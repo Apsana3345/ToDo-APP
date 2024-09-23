@@ -3,11 +3,47 @@ const inputFields=document.querySelectorAll('.goal-list')
 const errorLabel=document.querySelector('.errorlabel')
 const progressBar=document.querySelector('.progressBar')
 const progressValue=document.querySelector('.progress-value')
+const progresslabel=document.querySelector('.progress-label')
+const final=document.querySelector('.final')
+
+
+
+ const allQuotes=[
+    'Raise the bar by completing your goals!',
+    // 'First step is the bigger thing.',
+    'Well begun , First step is the bigger thing.',
+    'Just a step away ,keep going!',
+    'Whoa !You just completed all the goals, time for chill :D',
+ ]
+const finalQuotes=[
+    "“Move one step ahead, today!”",
+    "“Keep Going , You're making great progress!”",
+    // " “Half is already done”",
+    "“One step away”",
+    " “Congratulations!you have completed🎉”"
+]
+
+// const allGoals=JSON.parse(localStorage.getItem('allGoals')) ||{
+//     first:{
+//         name:'',
+//         completed:false,
+//     },
+//     second:{
+//         name:'',
+//         completed:false,
+//     },
+//     third:{
+//         name:'',
+//         completed:false,
+//     }
+// }
 
 const allGoals=JSON.parse(localStorage.getItem('allGoals')) ||{}
 
 let completedGoalsCount=Object.values(allGoals).filter((goal)=>goal.completed).length;
- progressValue.firstElementChild.innerText=`${completedGoalsCount}/3 completed`
+ progressValue.firstElementChild.innerText=`${completedGoalsCount}/${inputFields.length} completed`
+ progresslabel.innerText=allQuotes[completedGoalsCount]
+ final.innerText=finalQuotes[completedGoalsCount]
 //  progressValue.style.width=`${completedGoalsCount/3*100}%`
 // console.log(completedGoalsCount);
 
@@ -20,12 +56,15 @@ checkboxList.forEach((checkbox)=>{
         })
         if (allGoalsFilled){
         checkbox.parentElement.classList.toggle("completed");
-        progressValue.style.width=`${completedGoalsCount/3*100}%`
+        progressValue.style.width=`${(completedGoalsCount/inputFields.length)*100}%`
         const inputId=checkbox.nextElementSibling.id
         allGoals[inputId].completed=!allGoals[inputId].completed
         completedGoalsCount=Object.values(allGoals).filter((goal)=>goal.completed).length;
-        progressValue.style.width=`${completedGoalsCount/3*100}%`
-        progressValue.firstElementChild.innerText=`${completedGoalsCount}/3 completed`
+        progressValue.style.width=`${(completedGoalsCount/inputFields.length)*100}%`
+        progressValue.firstElementChild.innerText=`${completedGoalsCount}/${inputFields.length }completed`
+        progresslabel.innerText=allQuotes[completedGoalsCount]
+        final.innerText=finalQuotes[completedGoalsCount]
+
 localStorage.setItem('allGoals',JSON.stringify(allGoals))
         // errorLabel.style.display = 'none'; // Hide the error label
         // progressBar.classList.remove('show-error');
@@ -40,11 +79,14 @@ localStorage.setItem('allGoals',JSON.stringify(allGoals))
     })
 })
 inputFields.forEach((input)=>{
-//    console.log(  allGoals[input.id])
-   input.value= allGoals[input.id].name
-   if(allGoals[input.id].completed){
-    input.parentElement.classList.add('completed')
-   }
+
+    if(allGoals[input.id]){
+
+        input.value= allGoals[input.id].name
+        if(allGoals[input.id].completed){
+         input.parentElement.classList.add('completed')
+        }
+    }
         // if (input.value.trim() !== '') {
         //     input.style.color = 'black'; 
         // } else {
@@ -64,7 +106,17 @@ inputFields.forEach((input)=>{
     //     }})
     
     input .addEventListener('input',(e)=>{
-        allGoals[input.id]={name:input.value,completed:false,}
+        if(allGoals[input.id] &&allGoals[input.id].completed){
+            input.value=allGoals[input.id].name
+            return
+           }
+        if(allGoals[input.id] ){allGoals[input.id].name=input.value }
+        else{
+            allGoals[input.id]={
+                name:input.value,
+                completed:false,
+            }
+        }
      localStorage.setItem('allGoals' ,JSON.stringify(allGoals))
     })
         
