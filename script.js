@@ -6,25 +6,29 @@ const progressValue=document.querySelector('.progress-value')
 
 const allGoals=JSON.parse(localStorage.getItem('allGoals')) ||{}
 
-
-
+let completedGoalsCount=Object.values(allGoals).filter((goal)=>goal.completed).length;
+ progressValue.firstElementChild.innerText=`${completedGoalsCount}/3 completed`
+//  progressValue.style.width=`${completedGoalsCount/3*100}%`
+// console.log(completedGoalsCount);
 
 
 
 checkboxList.forEach((checkbox)=>{
     checkbox.addEventListener('click',(e)=>{
-        const allFieldsFilled=[...inputFields].every(function(input){
+        const allGoalsFilled=[...inputFields].every(function(input){
             return input.value
         })
-        if (allFieldsFilled){
+        if (allGoalsFilled){
         checkbox.parentElement.classList.toggle("completed");
-        progressValue.style.width="45%"
+        progressValue.style.width=`${completedGoalsCount/3*100}%`
         const inputId=checkbox.nextElementSibling.id
         allGoals[inputId].completed=!allGoals[inputId].completed
-        
-
+        completedGoalsCount=Object.values(allGoals).filter((goal)=>goal.completed).length;
+        progressValue.style.width=`${completedGoalsCount/3*100}%`
+        progressValue.firstElementChild.innerText=`${completedGoalsCount}/3 completed`
+localStorage.setItem('allGoals',JSON.stringify(allGoals))
         // errorLabel.style.display = 'none'; // Hide the error label
-        progressBar.classList.remove('show-error');
+        // progressBar.classList.remove('show-error');
 
     }
     else {
@@ -33,24 +37,24 @@ checkboxList.forEach((checkbox)=>{
     }
 
 
-    });
-});
+    })
+})
 inputFields.forEach((input)=>{
 //    console.log(  allGoals[input.id])
    input.value= allGoals[input.id].name
    if(allGoals[input.id].completed){
     input.parentElement.classList.add('completed')
    }
-        if (input.value.trim() !== '') {
-            input.style.color = 'black'; 
-        } else {
-            input.style.color = '#D9D9D9';
-        }
+        // if (input.value.trim() !== '') {
+        //     input.style.color = 'black'; 
+        // } else {
+        //     input.style.color = '#D9D9D9';
+        // }
 
     input.addEventListener('focus',()=>{
-        if (input.value.trim()===''){
-            input.style.color='black';
-        }
+        // if (input.value.trim()===''){
+        //     input.style.color='black';
+        // }
         progressBar.classList.remove('show-error');
     })
 

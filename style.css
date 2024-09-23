@@ -72,6 +72,7 @@ margin-bottom: 18px;
     border-radius: 15px;
    
     overflow: hidden;
+    transition:width 0.2s ease-in-out;
 }
 .progress-value span{
     padding-left:10px ; 
@@ -127,7 +128,7 @@ margin-top: 1px;
     border: none;
     margin-left: 5px ;
     padding: 3px;
-    color:#D9D9D9;
+    color:#211d1d;
     opacity: 0.6;
     font-family: inherit;
     /* background-color: black; */
@@ -139,9 +140,9 @@ margin-top: 1px;
 .check-icon{
     display: none;
 }
-.goal-list::after{
+/* .goal-list::after{
     color: rgb(18, 18, 18);
-}
+} */
 
 
 .final{
